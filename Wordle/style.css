@@ -1,0 +1,136 @@
+:root{
+  --main: white;
+  --text: black;
+  --accent: rgb(92, 92, 92);
+  --keyon: var(--main);
+}
+
+div{
+  background-color: var(--main);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+header{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--accent);
+  padding: 10px;
+  text-align: center;
+  height: 80px;
+}
+
+h1{
+  justify-content: center;
+  width: 90%;
+}
+
+#buttons{
+  display: flex;
+  justify-content: right;
+}
+
+#buttons button{
+  width: 80px;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: var(--main);
+  color: var(--text);
+  border: none;
+  border-radius: 3px;
+}
+
+#buttons button:hover{
+  background-color: var(--accent);
+}
+
+.wrap{
+  width: calc(100vw);
+}
+
+#footer{
+  position: fixed;
+  border-top: 1px solid var(--accent);
+  width: 100vw;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+}
+
+#game{
+  height: calc(100vh - 141px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+}
+
+table{
+  margin: 30px;
+}
+
+input{
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+#restart{
+  width: 135px;
+  height: 40px;
+  font-size: larger;
+  background-color: darkolivegreen;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+#restart:hover{
+  color: gray;
+  background-color: darkgreen;
+}
+
+#body{
+  display: flex;
+  justify-content: center;
+}
+
+#helptext{
+  width: 334px;
+  justify-self: right;
+  border-left: 2px solid var(--accent);
+  padding: 50px;
+  font-size: larger;
+}
+
+#hinttext{
+  border-top: 1px solid gray;
+  text-align: center;
+  padding: 10px;
+  height: 40px;
+  z-index: 100;
+  background-color: bisque;
+  transform: translate(0, -40px);
+  font-style: italic;
+  color: black;
+}
+
+#key{
+  padding: 20px;
+  width: 40px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 50px;
+  font-size: xx-large;
+  color: var(--main);
+  background-color: var(--keyon);
+}

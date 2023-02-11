@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Wordle</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <script src="./wordle.js"></script>
+    <div id="header">
+      <header>
+        <div class="wrap"></div>
+        <h1 id="title">Wordle</h1>
+        <div id="buttons" class="wrap">
+          <button id="darkmode" onclick="darkMode()">&#9681;</button>
+          <button id="hint" onclick="doHint()">&#63;</button>
+          <button id="help" onclick="disphelp()">&#9432;</button>
+        </div>
+      </header>
+    </div>
+    <div id="body">
+      <div id="game">
+      <div>
+      <table id="gameboard">
+        <tr id="row0">
+          <td ><input readonly type="text" id="00"></td>
+          <td ><input readonly type="text" id="01"></td>
+          <td ><input readonly type="text" id="02"></td>
+          <td ><input readonly type="text" id="03"></td>
+        </tr>
+        <tr id="row1">
+          <td ><input readonly type="text" id="10"></td>
+          <td ><input readonly type="text" id="11"></td>
+          <td ><input readonly type="text" id="12"></td>
+          <td ><input readonly type="text" id="13"></td>
+        </tr>
+        <tr id="row2">
+          <td ><input readonly type="text" id="20"></td>
+          <td ><input readonly type="text" id="21"></td>
+          <td ><input readonly type="text" id="22"></td>
+          <td ><input readonly type="text" id="23"></td>
+        </tr>
+        <tr id="row3">
+          <td ><input readonly type="text" id="30"></td>
+          <td ><input readonly type="text" id="31"></td>
+          <td ><input readonly type="text" id="32"></td>
+          <td ><input readonly type="text" id="33"></td>
+        </tr>
+      </table>
+    </div>
+      <button id="restart" onclick="restart()">Start Over</button>
+      <div id="key">
+        Key
+      </div>
+    </div>
+  </div>
+  <div id="foot">
+    <div id="footer">
+      <footer>&#169; Isaac Hus</footer>
+    </div>
+  </div>
+  </body>
+</html>
