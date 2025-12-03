@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Application Submitted</title>
+  <link rel="stylesheet" href="isaac_styles.css" />
+  <link rel="stylesheet" href="spencer_styles.css" />
+</head>
+<body style="padding-top:60px;">
+  <iframe src="menu.html" class="menu-iframe" id="menu-iframe" title="menu" style="display:block;height:62px;border:0;position:fixed;top:0;left:0;width:100%;z-index:1000;"></iframe>
+  <div class="filter-bar">
+    New Grad → Software Engineer - Acme Corp
+  </div>
+  <div class="popup-message">
+    <p>Application Submitted Successfully</p>
+    <p>Posting at <i>Acme Corp</i></p>
+    <p>Submitted on <i>December 2, 2025</i></p>
+    <button class="ok-btn">OK</button>
+  </div>
+</body>
+<script>
+  document.querySelector(".ok-btn").onclick = function () {
+    window.location.href = "home.html";
+  };
+</script>
+</html>

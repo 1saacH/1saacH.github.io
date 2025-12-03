@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>New Grad Postings</title>
+  <link rel="stylesheet" href="isaac_styles.css" />
+  <link rel="stylesheet" href="hooriya_styles.css" />
+</head>
+<body style="padding-top:60px;">
+  <iframe src="menu.html" class="menu-iframe" id="menu-iframe" title="menu" style="display:block;height:62px;border:0;position:fixed;top:0;left:0;width:100%;z-index:1000;"></iframe>
+
+  <div class="page">
+
+    <div class="content-area">
+      <div class="section-bar">
+        <h2 class="available-title">Available New Graduate Positions</h2>
+      </div>
+
+      <div class="table-wrap">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="intern-search"
+            class="search-input"
+            placeholder="Search internships..."
+            aria-label="Search internships"
+            onkeyup="filterInternships()"
+          />
+        </div>
+        <table class="intern-table" aria-label="Available internships">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Open Until</th>
+              <th>Date Posted</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="table-scroll">
+          <table class="intern-table" aria-label="Available internships body" style="margin:0;">
+            <tbody>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Junior%20Software%20Engineer&company=Google&location=Remote&openUntil=2026-05-31&posted=2026-02-12" target="_top">Junior Software Engineer</a></td>
+                <td>Google</td>
+                <td>Remote</td>
+                <td>2026-05-31</td>
+                <td>2026-02-12</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Product%20Design%20Engineer&company=Microsoft&location=On-site%20—%20Seattle,%20WA&openUntil=2026-04-15&posted=2026-01-28" target="_top">Product Design Engineer</a></td>
+                <td>Microsoft</td>
+                <td>On-site — Seattle, WA</td>
+                <td>2026-04-15</td>
+                <td>2026-01-28</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Intermediate%20Data%20Scientist&company=Meta&location=Hybrid%20—%20San%20Francisco,%20CA&openUntil=2026-06-01&posted=2026-03-02" target="_top">Intermediate Data Scientist</a></td>
+                <td>Meta</td>
+                <td>Hybrid — San Francisco, CA</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Intermediate%20Full%20Stack%20Developer&company=Nureva&location=Hybrid%20—%20Calgary,%20AB&openUntil=2026-06-01&posted=2026-03-02" target="_top">Intermediate Full Stack Developer</a></td>
+                <td>Nureva</td>
+                <td>Hybrid — Calgary, AB</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Junior%20Firmware%20Developer&company=Garmin&location=Hybrid%20—%20Calgary,%20AB&openUntil=2026-06-01&posted=2026-03-02" target="_top">Junior Firmware Developer</a></td>
+                <td>Garmin</td>
+                <td>Hybrid — Calgary, AB</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Junior%20Software%20Engineer&company=Google&location=Hybrid%20—%20San%20Francisco,%20CA&openUntil=2026-06-01&posted=2026-03-02" target="_top">Junior Software Engineer</a></td>
+                <td>Google</td>
+                <td>Hybrid — San Francisco, CA</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Intermediate%20Full%20Stack%20Developer&company=LodgeLink&location=Hybrid%20—%20Calgary,%20AB&openUntil=2026-06-01&posted=2026-03-02" target="_top">Intermediate Full Stack Developer</a></td>
+                <td>LodgeLink</td>
+                <td>Hybrid — Calgary, AB</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Junior%20Embedded%20Developer&company=Amazon&location=Hybrid%20—%20Vancouver,%20BC&openUntil=2026-06-01&posted=2026-03-02" target="_top">Junior Embedded Developer</a></td>
+                <td>Amazon</td>
+                <td>Hybrid — Vancouver, BC</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Junior%20Embedded%20Developer&company=Nureva&location=Hybrid%20—%20Ottawa,%20ON&openUntil=2026-06-01&posted=2026-03-02" target="_top">Junior Embedded Developer</a></td>
+                <td>Nureva</td>
+                <td>Hybrid — Ottawa, ON</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Junior%20Software%20Developer&company=DoorDash&location=Remote&openUntil=2026-06-01&posted=2026-03-02" target="_top">Junior Software Developer</a></td>
+                <td>DoorDash</td>
+                <td>Remote</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Junior%20Embedded%20Developer&company=RBC&location=Hybrid%20—%20Vancouver,%20BC&openUntil=2026-06-01&posted=2026-03-02" target="_top">Junior Embedded Developer</a></td>
+                <td>RBC</td>
+                <td>Hybrid — Vancouver, BC</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Intermediate%20Software%20Engineer&company=PayPal&location=Hybrid%20—%20Vancouver,%20BC&openUntil=2026-06-01&posted=2026-03-02" target="_top">Intermediate Software Engineer</a></td>
+                <td>PayPal</td>
+                <td>Hybrid — Vancouver, BC</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Security%20Software%20Engineer&company=IBM&location=Hybrid%20—%20Markham,%20ON&openUntil=2026-06-01&posted=2026-03-02" target="_top">Security Software Engineer</a></td>
+                <td>IBM</td>
+                <td>Hybrid — Markham, ON</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+              <tr>
+                <td><a class="job-link" href="./job_description.html?title=Back%20End%20Software%20Developer&company=TikTok&location=Hybrid%20—%20Vancouver,%20BC&openUntil=2026-06-01&posted=2026-03-02" target="_top">Back End Software Developer</a></td>
+                <td>TikTok</td>
+                <td>Hybrid — Vancouver, BC</td>
+                <td>2026-06-01</td>
+                <td>2026-03-02</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<script>
+  //filter based on search
+  document.getElementById("intern-search").addEventListener("keydown", function (e) {
+    filterInternships();
+  });
+
+  function filterInternships() {
+    const input = document.getElementById("intern-search");
+    const filter = input.value.toLowerCase();
+    const table = document.querySelector(".intern-table tbody");
+    const rows = table.getElementsByTagName("tr");
+
+    for (let i = 0; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      let match = false;
+
+      for (let j = 0; j < cells.length; j++) {
+        const cell = cells[j];
+        if (cell) {
+          const textValue = cell.textContent || cell.innerText;
+          if (textValue.toLowerCase().indexOf(filter) > -1) {
+            match = true;
+            break;
+          }
+        }
+      }
+
+      if (match) {
+        rows[i].style.display = "";
+      } else {
+        rows[i].style.display = "none";
+      }
+    }
+  }
+
+</script>
+</html>

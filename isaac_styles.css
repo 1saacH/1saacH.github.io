@@ -1,0 +1,225 @@
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* neutrals */
+  --bg: #f7fafc;
+  --panel-bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e6e9ee;
+
+  /* accents */
+  --accent: #c53030;
+  --accent-strong: #9b2c2c;
+
+  /* topbar specifics */
+  --topbar-bg: #f3f4f6;
+  --topbar-strip: #c53030;
+  --topbar-height: 60px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  height: 60px;
+  background-color: #ececec;
+}
+
+/* Top bar */
+.top-bar {
+  background: var(--topbar-bg);
+  color: var(--text);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--topbar-height);
+  border-top: 4px solid var(--topbar-strip);
+  gap: 12px;
+  font-size: 15px;
+}
+
+/* Brand (logo + title) */
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+.logo-img {
+  width: 60px;   /* made the logo bigger */
+  height: 58px;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* Menu list container */
+.menu-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  align-items: center;
+}
+
+/* Modern, uniform menu buttons — less bold */
+.menu-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--topbar-height) - 20px);
+  padding: 0 14px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 400; /* less bold */
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background-color 180ms ease, color 180ms ease, transform 120ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Focus ring for accessibility */
+.menu-item:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(197,48,48,0.12);
+  border-color: rgba(197,48,48,0.12);
+}
+
+/* Hover/focus: buttons turn accent red, text becomes light — no rounding */
+.menu-item:hover,
+.menu-item:focus-visible {
+  background-color: var(--accent) !important;
+  color: var(--panel-bg) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-radius: 0 !important;   /* no rounding on hover */
+}
+
+/* Active/pressed state (mouse-down) */
+.menu-item:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+}
+
+/* Active/current tab style: keep the same visuals as hover and remain square */
+.menu-item.active {
+  background-color: var(--accent) !important;
+  color: var(--panel-bg) !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  border-radius: 0 !important;
+}
+
+
+/* Right part (username + avatar) */
+.right-part {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.username {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 400; /* less bold */
+  font-size: 12px;  /* smaller username text */
+}
+
+/* Profile image */
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+}
+
+/* Page scaffolding */
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-part {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Username display */
+.username {
+  cursor: pointer;
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.2s ease;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.username:hover {
+  background-color: var(--accent);
+  color: var(--panel-bg);
+}
+
+/* Hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  z-index: 10;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 6px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.content-area
+{
+  padding: 0;
+  height: 80vh;
+}

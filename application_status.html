@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Applications</title>
+    <link rel="stylesheet" href="shayyan_styles.css" />
+    <link rel="stylesheet" href="isaac_styles.css" />
+  </head>
+  <body class="no-bg">
+    <iframe src="menu.html" class="menu-iframe" id="menu-iframe" title="menu" style="display:block;height:62px;border:0;position:fixed;top:0;left:0;width:100%;z-index:1000;"></iframe>
+
+      <div class="right-part">
+        <h3 class="username">[username]</h3>
+        <img
+          src="images/profile.png"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+      </div>
+    </div>
+
+    <main class="apps-container">
+      <section class="apps-hero">
+        <h1>My Applications</h1>
+      </section>
+
+      <section class="table-wrap table-scroll" aria-live="polite">
+        <table class="app-table" aria-label="My applications">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Company</th>
+              <th>Applied Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="#modal-job1" class="job-link" data-job-id="job1"
+                  >Software Engineer — New Grad</a
+                >
+              </td>
+              <td>Acme Corp</td>
+              <td>2025-10-01</td>
+              <td>
+                <span class="status status-under-review">Under Review</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a href="#modal-job2" class="job-link" data-job-id="job2"
+                  >Data Analyst Intern</a
+                >
+              </td>
+              <td>Globex</td>
+              <td>2025-09-15</td>
+              <td>
+                <span class="status status-interview">Interview Scheduled</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a href="#modal-job3" class="job-link" data-job-id="job3"
+                  >Web Developer — Contract</a
+                >
+              </td>
+              <td>Initech</td>
+              <td>2025-08-20</td>
+              <td><span class="status status-submitted">Submitted</span></td>
+            </tr>
+
+            <tr>
+              <td>
+                <a href="#modal-job4" class="job-link" data-job-id="job4"
+                  >Junior QA Engineer</a
+                >
+              </td>
+              <td>TechWorks</td>
+              <td>2025-07-30</td>
+              <td><span class="status status-rejected">Rejected</span></td>
+            </tr>
+
+            <tr>
+              <td>
+                <a href="#modal-job5" class="job-link" data-job-id="job5"
+                  >Cloud Engineer</a
+                >
+              </td>
+              <td>NimbusCloud</td>
+              <td>2025-10-05</td>
+              <td>
+                <span class="status status-interview">Interview Scheduled</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a href="#modal-job6" class="job-link" data-job-id="job6"
+                  >Machine Learning Engineer</a
+                >
+              </td>
+              <td>DeepVision</td>
+              <td>2025-10-10</td>
+              <td>
+                <span class="status status-under-review">Under Review</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- CSS-only modals: each job has its own modal target id. Clicking a job-link navigates to #modal-jobX which triggers :target styles. -->
+    <div id="modal-job1" class="modal" aria-hidden="true">
+      <div
+        class="modal-inner"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-job1-title"
+      >
+        <a class="modal-close" href="#" aria-label="Close">×</a>
+        <h2 id="modal-job1-title">Software Engineer — New Grad</h2>
+        <p>
+          <strong>Company Website:</strong>
+          <a href="#" class="company-link">Acme Corp</a>
+        </p>
+        <p><strong>Submission Date:</strong> 2025-10-01</p>
+        <div class="files-uploaded">
+          <strong>Files uploaded:</strong>
+          <ul>
+            <li><a href="#">Resume.pdf</a></li>
+            <li><a href="#">Transcript.pdf</a></li>
+            <li><a href="#">CoverLetter.pdf</a></li>
+          </ul>
+        </div>
+        <p><strong>Status:</strong> Under Review</p>
+        <p>
+          <strong>Job description:</strong> Work on backend systems and APIs.
+          Collaborate with product teams to design scalable services. You will
+          design RESTful endpoints, optimize database performance, write
+          integration tests, and participate in architecture and code reviews.
+          This role involves mentoring interns and contributing to the
+          reliability and observability of our services.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-job2" class="modal" aria-hidden="true">
+      <div
+        class="modal-inner"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-job2-title"
+      >
+        <a class="modal-close" href="#" aria-label="Close">×</a>
+        <h2 id="modal-job2-title">Data Analyst Intern</h2>
+        <p>
+          <strong>Company Website:</strong>
+          <a href="#" class="company-link">Globex</a>
+        </p>
+        <p><strong>Submission Date:</strong> 2025-09-15</p>
+        <div class="files-uploaded">
+          <strong>Files uploaded:</strong>
+          <ul>
+            <li><a href="#">Resume.pdf</a></li>
+            <li><a href="#">Transcript.pdf</a></li>
+          </ul>
+        </div>
+        <p><strong>Status:</strong> Interview Scheduled</p>
+        <p>
+          <strong>Job description:</strong> Analyze large datasets to provide
+          insights to stakeholders. Use SQL and Python for data processing,
+          build repeatable ETL pipelines, and create visualizations and
+          dashboards to surface trends. The role includes partnering with
+          product and engineering to translate data into product improvements
+          and creating models to forecast user behavior.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-job3" class="modal" aria-hidden="true">
+      <div
+        class="modal-inner"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-job3-title"
+      >
+        <a class="modal-close" href="#" aria-label="Close">×</a>
+        <h2 id="modal-job3-title">Web Developer — Contract</h2>
+        <p>
+          <strong>Company Website:</strong>
+          <a href="#" class="company-link">Initech</a>
+        </p>
+        <p><strong>Submission Date:</strong> 2025-08-20</p>
+        <div class="files-uploaded">
+          <strong>Files uploaded:</strong>
+          <ul>
+            <li><a href="#">Resume.pdf</a></li>
+          </ul>
+        </div>
+        <p><strong>Status:</strong> Submitted</p>
+        <p>
+          <strong>Job description:</strong> Front-end development using React.
+          Build responsive web pages and components, optimize runtime
+          performance and bundle sizes, and ensure accessibility standards are
+          met. You'll collaborate with designers to implement high-quality UI,
+          create reusable components, and add unit and integration tests to
+          maintain quality across releases.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-job4" class="modal" aria-hidden="true">
+      <div
+        class="modal-inner"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-job4-title"
+      >
+        <a class="modal-close" href="#" aria-label="Close">×</a>
+        <h2 id="modal-job4-title">Junior QA Engineer</h2>
+        <p>
+          <strong>Company Website:</strong>
+          <a href="#" class="company-link">TechWorks</a>
+        </p>
+        <p><strong>Submission Date:</strong> 2025-07-30</p>
+        <div class="files-uploaded">
+          <strong>Files uploaded:</strong>
+          <ul>
+            <li><a href="#">Resume.pdf</a></li>
+            <li><a href="#">CoverLetter.pdf</a></li>
+          </ul>
+        </div>
+        <p>
+          <strong>Job description:</strong> Test web applications, write test
+          plans and automate regression suites. Responsibilities include
+          designing test strategies, building automated end-to-end tests,
+          integrating tests into CI pipelines, and investigating flaky tests.
+          You will work closely with developers to improve test coverage and
+          reduce release risk.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-job5" class="modal" aria-hidden="true">
+      <div
+        class="modal-inner"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-job5-title"
+      >
+        <a class="modal-close" href="#" aria-label="Close">×</a>
+        <h2 id="modal-job5-title">Cloud Engineer</h2>
+        <p>
+          <strong>Company Website:</strong>
+          <a href="#" class="company-link">NimbusCloud</a>
+        </p>
+        <p><strong>Submission Date:</strong> 2025-10-05</p>
+        <div class="files-uploaded">
+          <strong>Files uploaded:</strong>
+          <ul>
+            <li><a href="#">Resume.pdf</a></li>
+            <li><a href="#">Certifications.pdf</a></li>
+          </ul>
+        </div>
+        <p>
+          <strong>Job description:</strong> Design and maintain cloud
+          infrastructure on AWS/GCP. Implement CI/CD pipelines, author
+          infrastructure-as-code, and automate operational workflows. You will
+          focus on scalability, cost optimization, security hardening and
+          incident response, collaborating with engineering teams to deliver
+          reliable production systems.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-job6" class="modal" aria-hidden="true">
+      <div
+        class="modal-inner"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-job6-title"
+      >
+        <a class="modal-close" href="#" aria-label="Close">×</a>
+        <h2 id="modal-job6-title">Machine Learning Engineer</h2>
+        <p>
+          <strong>Company Website:</strong>
+          <a href="#" class="company-link">DeepVision</a>
+        </p>
+        <p><strong>Submission Date:</strong> 2025-10-10</p>
+        <div class="files-uploaded">
+          <strong>Files uploaded:</strong>
+          <ul>
+            <li><a href="#">Resume.pdf</a></li>
+            <li><a href="#">Portfolio.pdf</a></li>
+          </ul>
+        </div>
+        <p>
+          <strong>Job description:</strong> Build and deploy computer vision
+          models for large-scale image analysis. Develop and train deep learning
+          models, design data pipelines and augmentation strategies, and
+          optimize inference performance for production. Collaborate with data
+          engineers to scale training infrastructure and implement robust model
+          monitoring and A/B evaluation strategies.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bookmarks</title>
+  <link rel="stylesheet" href="isaac_styles.css" />
+  <link rel="stylesheet" href="spencer_styles.css" />
+</head>
+<body style="padding-top:60px;">
+  <iframe src="menu.html" class="menu-iframe" id="menu-iframe" title="menu" style="display:block;height:62px;border:0;position:fixed;top:0;left:0;width:100%;z-index:1000;"></iframe>
+
+  <div class="page">
+
+    <div class="content-area">
+      <div class="section-bar">
+        <h2 class="available-title">Bookmarks</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="bookmark-table">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Open Until</th>
+              <th>Date Posted</th>
+              <th class="remove-col"></th>
+            </tr>
+          </thead>
+        </table>
+        <div class="table-scroll">
+          <table class="bookmark-table">
+            <tbody id="bookmark-body"></tbody>
+          </table>
+        </div>
+        </div>
+
+    </div>
+  </div>
+</body>
+<script>
+  let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+  const tbody = document.getElementById("bookmark-body");
+  bookmarks.forEach((bookmark, index) => {
+    console.log(bookmark, index);
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td><a class="job-link" href="${bookmark.link}" target="_top">${bookmark.title}</a></td>
+      <td>${bookmark.company}</td>
+      <td>${bookmark.location}</td>
+      <td>${bookmark.openUntil}</td>
+      <td>${bookmark.posted}</td>
+      <td><button class="remove-btn">Remove</button></td>`;
+    
+    tbody.appendChild(tr);
+    
+    tr.querySelector(".remove-btn").addEventListener("click", () => {
+      bookmarks.splice(index, 1);
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      tr.remove();
+    });
+
+  });
+  
+</script>
+</html>

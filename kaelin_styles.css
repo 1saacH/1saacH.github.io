@@ -1,0 +1,249 @@
+:root{
+  /* === Color scheme (red / yellow / white) === */
+  --red:#d60000;
+  --red-dark:#b80000;
+  --yellow:#ffd400;
+
+  --text:#111;          /* main text (very dark gray) */
+  --muted:#222;         /* paragraphs / secondary */
+  --card:#ffffff;       /* card background */
+  --page:#ffffff;       /* page background */
+  --border:#e2e2e2;     /* light borders */
+
+  --bg: var(--page);
+  --accent: var(--red);
+  --accent-2: var(--red-dark);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.55;
+  background-color: #ececec;
+}
+
+/* --- SECTION BELOW THE FILTER BAR --- */
+#job-detail {
+  padding: 16px clamp(12px, 3vw, 28px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 900px){
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* Card styling */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  min-height: 0; /* remove previous min-height */
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  letter-spacing: .2px;
+}
+
+/* Application card */
+.field {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.label { color: var(--muted); font-weight: 600; }
+
+/* File inputs styling */
+input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #f9f9f9;
+  color: #222;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+input[type="file"]::file-selector-button {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  padding: 6px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Job description card */
+.job-body {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;       /* full width of container */
+  min-height: 400px; /* increased height */
+  max-height: none;  /* allow expansion */
+  overflow: visible; /* no scrolling */
+  background: inherit; /* inherit parent background */
+  color: var(--text);
+}
+
+.job-body p {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+/* Make Job Description card wider in grid layout */
+#jobBody {
+  grid-column: span 2; /* spans both columns on desktop */
+}
+@media (max-width: 900px){
+  #jobBody { grid-column: span 1; }
+}
+
+/* Status row + Done button */
+.bottom-row{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-top: 14px;
+}
+.status{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Yellow status pill with dark text */
+.pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--yellow);
+  border: 1px solid #e6c200;
+  color: #000;
+  font-weight: 600;
+}
+.dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 6px rgba(214,0,0,0.5);
+}
+
+/* Red primary button with white text */
+.btn {
+  background: var(--accent);
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
+  margin: 16px 5px;
+}
+.btn:hover { background: var(--accent-2); }
+.btn:active { transform: translateY(1px); }
+
+#CancelBtn {
+  background-color: #f8f8f8;
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(57, 57, 57, 0.25);
+}
+#CancelBtn:hover { background-color: #f0f0f0; }
+
+#applyBtn {
+  background-color: #f8f8f8;
+  color: var(--text);
+}
+#applyBtn:hover { background-color: #f0f0f0; }
+
+/* Action buttons below Application card */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Section bar and title */
+.section-bar{
+  margin: 28px;
+  width: calc(100vw - 56px);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px;
+}
+.company-name-title {
+  margin-right: 28px;
+}
+
+/* Back link in title bar */
+.back-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* White vertical divider */
+.divider {
+  width: 1px;
+  height: 24px; /* match text height */
+  background-color: #ffffff;
+}
+
+/* Header container for Application card */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.bookmark-top {
+  background-color: #f8f8f8;
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-weight: 600;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* space between icon and text */
+}
+
+.bookmark-top:hover {
+  background-color: #f0f0f0;
+}
+
+.bookmark-icon {
+  width: 16px;  /* adjust size */
+  height: 16px; /* adjust size */
+}

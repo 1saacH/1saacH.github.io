@@ -1,0 +1,439 @@
+/* Styles for intern_postings.html — top bar injection + table layout */
+
+/* reuse variables if present; provide fallbacks */
+:root {
+  --main-red: #d6011c;
+  --main-yellow: #ffcc00;
+  --main-text: #3d3d3d;
+  --light-grey: #f4f4f4;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+/* container for injected top bar */
+#menu-container {
+  width: 100%;
+}
+
+/* ensure top-bar from menu.html sits fixed at top of viewport */
+#menu-container .top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  /* keep visual consistent if menu.html relies on these vars */
+  background-color: var(--main-red);
+  color: var(--light-grey);
+}
+
+/* iframe fallback when fetch is blocked (file://) */
+.menu-iframe {
+  width: 100%;
+  border: 0;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: var(--main-red);
+}
+
+/* page layout sits below the fixed top bar (script sets body padding-top) */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* content area */
+.content-area {
+  padding: 16px;
+}
+
+/* page background to contrast with the white table */
+body {
+  background-color: #ececec; /* soft grey */
+  color: var(--main-text);
+}
+
+/* section bar that matches the top-bar visual style (but static) */
+.section-bar {
+  width: 100%;
+  background-color: var(--main-red);
+  color: var(--light-grey);
+  padding: 12px 10px; /* match table cell padding */
+  border-radius: 6px;
+  margin: 18px 0 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.section-bar .available-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: inherit;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  padding-left: 0; /* ensure no extra padding */
+}
+
+/* title above the table */
+.available-title {
+  margin: 24px 16px 8px;
+  font-size: 1.5rem;
+  color: var(--main-text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+/* table wrapper for horizontal scrolling on small screens */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* scrollable container for the table to show a visible scrollbar when needed */
+.table-scroll {
+  max-height: 70vh; /* limit height so vertical scrollbar appears */
+  overflow: auto;
+  padding: 0; /* remove padding to align with section bar */
+}
+
+/* webkit scrollbar styling to make the scrollbar visible and friendly */
+.table-scroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.table-scroll::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
+}
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9e9e9e;
+}
+
+/* full-width table styling */
+.bookmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  table-layout: fixed;
+}
+
+/* cells */
+.bookmark-table th,
+.bookmark-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* header row */
+.bookmark-table thead th {
+  background: #f7f9fc;
+  font-weight: 600;
+  /* keep header visible when scrolling horizontally and slightly when vertically */
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* job links */
+.bookmark-table a.job-link {
+  color: #1a73e8;
+  text-decoration: none;
+}
+.bookmark-table a.job-link:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Make tables align */
+.bookmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* ensures columns align */
+}
+
+.bookmark-table th,
+.bookmark-table td {
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Set consistent column widths */
+.bookmark-table th:nth-child(1),
+.bookmark-table td:nth-child(1) {
+  width: 20%;
+}
+.bookmark-table th:nth-child(2),
+.bookmark-table td:nth-child(2) {
+  width: 20%;
+}
+.bookmark-table th:nth-child(3),
+.bookmark-table td:nth-child(3) {
+  width: 23%;
+}
+.bookmark-table th:nth-child(4),
+.bookmark-table td:nth-child(4) {
+  width: 13%;
+}
+.bookmark-table th:nth-child(5),
+.bookmark-table td:nth-child(5) {
+  width: 13%;
+}
+
+.remove-btn {
+  background-color: var(--main-red);
+  color: var(--light-grey);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.remove-btn:hover {
+  background-color: #b80017;
+  transform: scale(1.03);
+}
+
+/* Profile and alerts container */
+.profile-alerts {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 30px;
+  padding-top: 30px;
+  font-family: var(--font-sans);
+  color: var(--main-text);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+/* Profile section */
+.profile {
+  flex: 1;
+  max-width: 400px;
+}
+
+/* My Info header */
+.user-header {
+  margin-bottom: 15px;
+}
+
+.user-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--main-text);
+  margin: 0;
+}
+
+.user-info {
+  background: #fff;
+  padding: 20px 35px 35px 35px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  position: relative;
+  min-width: 700px;
+  padding-left: 50px;
+}
+
+/* show an edit (pencil) icon next to each section title (h3) */
+.user-info h3 {
+  margin: 0 0 12px 0;
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.user-info h3::after {
+  content: " ✎";
+  font-size: 1.1rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.user-info h3:hover::after {
+  color: var(--main-red);
+  transform: scale(1.15);
+}
+
+.user-info p {
+  margin: 8px 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--main-text);
+}
+
+.user-info p strong {
+  display: inline-block;
+  min-width: 80px;
+  color: var(--main-text);
+}
+
+/* Alerts panel */
+.alerts-panel {
+  width: 400px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.alerts-header {
+  background: var(--main-red);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  
+}
+
+.bell-icon {
+  position: relative;
+  font-size: 1.3rem;
+}
+
+.alert-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--main-yellow);
+  color: var(--main-text);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Alert item with hover effect */
+.alert-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.alert-item:hover {
+  background-color: #f8f8f8;
+}
+
+.alert-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--main-text);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.alert-badge {
+  background: var(--main-red);
+  color: #fff;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .user-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .profile-alerts {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .profile {
+    max-width: 100%;
+  }
+
+  .alerts-panel {
+    width: 100%;
+  }
+
+  .user-info {
+    padding: 15px 20px;
+  }
+}
+
+.filter-bar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-red);
+    color: var(--light-grey);
+    border-top: 1px solid var(--main-text);
+    border-bottom: 1px solid var(--main-text);
+    padding: 15px 20px;
+    font-family: var(--font-sans);
+    font-size: 18px;
+    z-index: 999;
+}
+
+.popup-message {
+  position: fixed;
+  top: 350px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f4f4f4;
+  color: var(--main-text);
+  border: 3px solid var(--main-red);
+  border-radius: 8px;
+  padding: 80px 80px;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  z-index: 2000;
+  min-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ok-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  border: none;
+  background-color: var(--main-red);
+  color: var(--light-grey);
+  border-radius: 5px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+
+.ok-btn:hover {
+  background-color: #b80017;
+  transform: scale(1.03);
+}

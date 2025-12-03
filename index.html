@@ -1,66 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- These should go on every page, change up the navbar tho -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#" id="current">About </a></li>
-                <li><a href="./skills.html">Skills </a></li>
-                <li><a href="./education.html">Education </a></li>
-                <li><a href="./experience.html">Experience </a></li>
-                <li><a href="./interests.html">Interests </a></li>
-                <li><a href="./contact.html">Contact </a></li>
-            </ul>
-        </nav>
-    </header>
-    <div id="content">
-    <div id="profile">
-        <img src="./pfp.png" alt="dalle_pfp">
-        <h1 id="name">Isaac Hus</h1>
-        <h3 id="job">SWE Student</h3>
-        <p id="email">isaac.hus@ucalgary.ca</p>
-    </div>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers</title>
+    <link rel="stylesheet" href="isaac_styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="brand">
+        <img
+          src="images/logo.webp"
+          alt="Student Career Search logo"
+          class="logo-img"
+          id="logo"
+        />
+      </div>
 
-    
-    
-    <div id="info">
-    <h2 id="title">About</h2>
-    <p>I'm currently in my second year of software engineering at the University of Calgary. I have been coding for fun since grade 11 and fell in love with it. I am passionate about a variety of STEM fields such as data science, computer hardware and security engineering. I am excited to learn more about software in my later years of my degree. I have been told that I am hard working, organized and dedicated. I look forward to future opportunities that will feed my interests and help me grow into a better engineer.</p>
-    
-    <p>I am knowledgeable about:</p>
-    <table>
-        <tbody>
-            <tr>
-                <td><input type="checkbox" checked> HTML </td>
-                <td><input type="checkbox" checked> CSS </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked> JS </td>
-                <td><input type="checkbox" checked> C++ </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked> C </td>
-                <td><input type="checkbox" checked> Python </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked> Git </td>
-                <td><input type="checkbox" checked> Java </td>
-            </tr>
-        </tbody>
-    </table>
+      <div class="tabs">
+        <ul class="menu-list">
+          <li class="menu-list-item" id="home">
+            <a href="./home.html" class="menu-item" target="_top">Home</a>
+          </li>
+          <li class="menu-list-item" id="ng-postings">
+            <a href="./new_grad_postings.html" class="menu-item" target="_top">New Grad</a>
+          </li>
+          <li class="menu-list-item" id="intern-postings">
+            <a href="./intern_postings.html" class="menu-item" target="_top">Internships</a>
+          </li>
+          <li class="menu-list-item" id="application-status">
+            <a href="./application_status.html" class="menu-item" target="_top">My Applications</a>
+          </li>
+          <li class="menu-list-item" id="bookmarks">
+            <a href="./bookmarks.html" class="menu-item" target="_top">My Bookmarks</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="right-part">
+        <div class="dropdown">
+          <h3 class="username">[username] ▾</h3>
+          <div class="dropdown-content">
+            <a id="logout-btn">Logout</a>
+          </div>
+        </div>
+        <img
+          src="images/profile.png"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+      </div>
     </div>
-    </div>
-    <footer>
-        <p>&copy Isaac Hus 2023</p>
-    </footer>
-</body>
+
+    <script>
+      /* Existing redirect behavior (kept intact) */
+      document.getElementById("logo").onclick = function () {
+        top.location.href = "home.html";
+      };
+      document.getElementById("home").onclick = function () {
+        top.location.href = "home.html";
+      };
+      document.getElementById("ng-postings").onclick = function () {
+        top.location.href = "new_grad_postings.html";
+      };
+      document.getElementById("intern-postings").onclick = function () {
+        top.location.href = "intern_postings.html";
+      };
+      document.getElementById("application-status").onclick = function () {
+        top.location.href = "application_status.html";
+      };
+      document.getElementById("bookmarks").onclick = function () {
+        top.location.href = "bookmarks.html";
+      };
+
+      document.getElementById("logout-btn").onclick = function () {
+        top.location.href = "login.html";
+      };
+
+
+      /* Robust active-tab detection and click handling */
+      (function () {
+        const menuLinks = document.querySelectorAll('.menu-item');
+
+        // Compute current filename (e.g. "home.html"). If root or empty, treat as "home.html"
+        let currentPage = window.location.pathname.split('/').pop();
+        if (!currentPage || currentPage === '') {
+          // you can change this default if your root page is different
+          currentPage = 'home.html';
+        }
+
+        // Try to match each menu link's href to the current page filename.
+        menuLinks.forEach(link => {
+          const href = link.getAttribute('href') || '';
+          const hrefFile = href.split('/').pop();
+
+          // If exact filename matches OR link href contains currentPage, mark active
+          if (hrefFile === currentPage || href.indexOf(currentPage) !== -1) {
+            link.classList.add('active');
+          }
+
+          // Add click handler so the item shows active immediately (before navigation)
+          link.addEventListener('click', (e) => {
+            // Add active class locally so user sees the selection immediately
+            menuLinks.forEach(i => i.classList.remove('active'));
+            link.classList.add('active');
+
+            // Let the normal <a> navigation proceed (no preventDefault)
+          });
+        });
+      })();
+    </script>
+
+  </body>
 </html>

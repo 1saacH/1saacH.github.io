@@ -1,0 +1,187 @@
+/* Styles for intern_postings.html — top bar injection + table layout */
+
+/* reuse variables if present; provide fallbacks */
+:root {
+  --main-red: #d6011c;
+  --main-yellow: #ffcc00;
+  --main-text: #3d3d3d;
+  --light-grey: #f4f4f4;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* container for injected top bar */
+#menu-container { width: 100%; }
+
+/* ensure top-bar from menu.html sits fixed at top of viewport */
+#menu-container .top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  /* keep visual consistent if menu.html relies on these vars */
+  background-color: var(--main-red);
+  color: var(--light-grey);
+}
+
+/* iframe fallback when fetch is blocked (file://) */
+.menu-iframe {
+  width: 100%;
+  border: 0;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: var(--main-red);
+}
+
+/* page layout sits below the fixed top bar (script sets body padding-top) */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* content area */
+.content-area {
+  padding: 16px;
+}
+
+/* page background to contrast with the white table */
+body {
+  background-color: #ececec; /* soft grey */
+  color: var(--main-text);
+}
+
+/* section bar that matches the top-bar visual style (but static) */
+.section-bar {
+  width: 100%;
+  background-color: var(--main-red);
+  color: var(--light-grey);
+  padding: 12px 10px;  /* match table cell padding */
+  border-radius: 6px;
+  margin: 18px 0 8px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.section-bar .available-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: inherit;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  padding-left: 0;  /* ensure no extra padding */
+}
+
+/* title above the table */
+.available-title {
+  margin: 24px 16px 8px;
+  font-size: 1.5rem;
+  color: var(--main-text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+/* table wrapper for horizontal scrolling on small screens */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* scrollable container for the table to show a visible scrollbar when needed */
+.table-scroll {
+  max-height: 65vh; /* limit height so vertical scrollbar appears */
+  overflow: auto;
+  padding: 0; /* remove padding to align with section bar */
+}
+
+/* webkit scrollbar styling to make the scrollbar visible and friendly */
+.table-scroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.table-scroll::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
+}
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9e9e9e;
+}
+
+/* full-width table styling */
+.intern-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  background: #fff;
+  table-layout: fixed;
+}
+
+/* cells */
+.intern-table th,
+.intern-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* header row */
+.intern-table thead th {
+  background: #f7f9fc;
+  font-weight: 600;
+  /* keep header visible when scrolling horizontally and slightly when vertically */
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* job links */
+.intern-table a.job-link {
+  color: #1a73e8;
+  text-decoration: none;
+}
+.intern-table a.job-link:hover {
+  text-decoration: underline;
+}
+
+/* responsive tweaks */
+@media (max-width: 600px) {
+  .intern-table th,
+  .intern-table td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+  .available-title {
+    font-size: 1.25rem;
+    margin-left: 12px;
+  }
+  .content-area {
+    padding: 12px;
+  }
+}
+
+
+.search-bar {
+  margin: 12px 0;
+  text-align: left;
+  background: #f7f9fc;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}

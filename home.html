@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Home</title>
+    <link rel="stylesheet" href="isaac_styles.css" />
+    <link rel="stylesheet" href="spencer_styles.css" />
+  </head>
+  <body style="padding-top: 60px">
+    <iframe src="menu.html" class="menu-iframe" id="menu-iframe" title="menu" style="display:block;height:62px;border:0;position:fixed;top:0;left:0;width:100%;z-index:1000;"></iframe>
+    <div class="profile-alerts">
+      <div class="profile">
+        <div class="user-info">
+          <h2>My Information</h2>
+          <h3>Personal Info</h3>
+          <p><strong>Name:</strong> John Doe</p>
+          <p><strong>UCID:</strong> 30199988</p>
+        </div>
+        <div class="user-info">
+          <h3>Contact Info</h3>
+          <p><strong>Phone:</strong>403-123-4567</p>
+          <p><strong>Email:</strong> john.doe@ucalgary.ca</p>
+        </div>
+        <div class="user-info">
+          <h3>Address</h3>
+          <p><strong>Home:</strong>2500 University Dr NW</p>
+        </div>
+      </div>
+      <div class="alerts-panel">
+        <div class="alerts-header">
+          <span>Alerts</span>
+          <div class="bell-icon">
+            🔔
+            <span class="alert-count">4</span>
+          </div>
+        </div>
+
+        <div class="alert-item" id="alert-1">
+          <p>New Amazon internship posted.</p>
+          <span class="alert-badge">1</span>
+        </div>
+
+        <div class="alert-item" id="alert-2">
+          <p>Bookmarked application due soon.</p>
+          <span class="alert-badge">2</span>
+        </div>
+        <div class="alert-item" id="alert-3">
+          <p>Microsoft application status updated.</p>
+          <span class="alert-badge">3</span>
+        </div>
+        <div class="alert-item" id="alert-4">
+          <p>Amazon application status updated.</p>
+          <span class="alert-badge">4</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // routing to other pages for alerts
+    document.getElementById("alert-1").onclick = function () {
+      top.location.href = "intern_postings.html";
+    };
+    document.getElementById("alert-2").onclick = function () {
+      top.location.href = "bookmarks.html";
+    };
+    document.getElementById("alert-3").onclick = function () {
+      top.location.href = "application_status.html";
+    };
+
+    document.getElementById("alert-4").onclick = function () {
+      top.location.href = "application_status.html";
+    };
+  </script>
+</html>

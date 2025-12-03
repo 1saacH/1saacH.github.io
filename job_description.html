@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Job Detail Section</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="hooriya_styles.css" />
+  <link rel="stylesheet" href="kaelin_styles.css" />
+  <style>
+    /* Popup styles */
+    .popup-message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 2px solid #333;
+      padding: 20px 30px;
+      z-index: 2000;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
+      border-radius: 10px;
+    }
+    .popup-message p {
+      margin: 10px 0;
+    }
+    .ok-btn {
+      margin-top: 15px;
+      padding: 8px 20px;
+      cursor: pointer;
+    }
+    /* Overlay to dim background */
+    #overlay {
+      display: none;
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1500;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="menu.html" title="Navigation Menu" style="width:100%; height:60px; border:none"></iframe>
+
+  <div class="section-bar">
+    <a href="javascript:window.history.back()" class="back-link">Back to Listings</a>
+    <span class="divider"></span>
+    <h3 id="company-name-title" class="company-name-title">Garmin</h3>
+    <h2 id="available-title" class="available-title">Software Developer Intern (16 months) — Calgary</h2>
+  </div>
+
+  <section id="job-detail" aria-label="Job application and description">
+    <div class="grid">
+      <!-- Job Description Card -->
+      <div class="card" role="region" aria-labelledby="jd-title">
+        <h2 id="jd-title">Job Description</h2>
+        <div class="job-body" id="jobBody">
+          <p id="positionP"><strong>Position: </strong></p>
+          <p id="locationP"><strong>Location: </strong></p>
+          <p><strong>About the role:</strong> Work with a cross-functional team to build and test web features used by thousands of students.</p>
+          <p><strong>Responsibilities:</strong></p>
+          <p>
+            • Implement small frontend components with HTML/CSS/JS<br />
+            • Write unit tests and help with code reviews<br />
+            • Assist with bug triage and documentation
+          </p>
+          <p><strong>Requirements:</strong></p>
+          <p>
+            • Currently enrolled in a CS/SE program<br />
+            • Basic Git knowledge, eagerness to learn
+          </p>
+        </div>
+      </div>
+
+      <!-- Application Card -->
+      <div class="card" role="region" aria-labelledby="app-title">
+        <div class="app-header">
+          <h2 id="app-title">Application</h2>
+          <button class="btn bookmark-top" id="bookmark-btn" type="button">
+            <img src="images/bookmark-ribbon.png" alt="Bookmark" class="bookmark-icon" />
+            Bookmark
+          </button>
+        </div>
+
+        <div class="field">
+          <div class="label">Resume</div>
+          <input type="file" id="resume" aria-label="Upload resume" />
+        </div>
+
+        <div class="field">
+          <div class="label">Cover Letter</div>
+          <input type="file" id="cover" aria-label="Upload cover letter" />
+        </div>
+
+        <div class="field">
+          <div class="label">Transcript</div>
+          <input type="file" id="transcript" aria-label="Upload transcript" />
+        </div>
+
+        <div class="field">
+          <div class="label">References</div>
+          <input type="text" id="references" placeholder="Names and contact info" />
+        </div>
+
+        <div class="field">
+          <div class="label">Portfolio / GitHub</div>
+          <input type="url" id="portfolio" placeholder="Link to portfolio or GitHub" />
+        </div>
+
+        <div class="field">
+          <div class="label">Additional Notes</div>
+          <textarea id="notes" rows="3" placeholder="Any extra information"></textarea>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn" id="apply-btn" type="button">Submit Application</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overlay -->
+  <div id="overlay"></div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup-message">
+    <p id="popup-title"></p>
+    <p id="popup-subtitle"></p>
+    <p id="popup-extra"></p>
+    <button id="popup-ok" class="ok-btn">OK</button>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const title = params.get("title");
+    document.getElementById("available-title").textContent = title;
+    const positionP = document.getElementById("positionP");
+    positionP.innerHTML = `<strong>Position:</strong> ${title}`;
+
+    document.getElementById("company-name-title").textContent = params.get("company");
+    const jobLocation = params.get("location");
+    const locationP = document.getElementById("locationP");
+    locationP.innerHTML = `<strong>Location:</strong> ${jobLocation}`;
+  </script>
+
+  <script>
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    const popupTitle = document.getElementById("popup-title");
+    const popupSubtitle = document.getElementById("popup-subtitle");
+    const popupExtra = document.getElementById("popup-extra");
+    const popupOkBtn = document.getElementById("popup-ok");
+
+    function showPopup(title, subtitle = "", extra = "") {
+      popupTitle.innerHTML = title;
+      popupSubtitle.innerHTML = subtitle;
+      popupExtra.innerHTML = extra;
+      popup.style.display = "block";
+      overlay.style.display = "block";
+    }
+
+    function hidePopup() {
+      popup.style.display = "none";
+      overlay.style.display = "none";
+    }
+
+    // Bookmark button popup (just closes popup)
+    document.getElementById("bookmark-btn").onclick = function () {
+      const params = new URLSearchParams(window.location.search);
+      const bookmark = {
+        title: params.get("title"),
+        company: params.get("company"),
+        location: params.get("location"),
+        openUntil: params.get("openUntil"),
+        posted: params.get("posted"),
+        link: window.location.href,
+      };
+
+      let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+      const exists = bookmarks.some(b => b.link === bookmark.link);
+      if (!exists) bookmarks.push(bookmark);
+
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      
+      showPopup("Application Bookmarked Successfully");
+      popupOkBtn.onclick = hidePopup;
+    };
+
+    // Submit Application button popup (OK goes to home.html)
+    document.getElementById("apply-btn").onclick = function () {
+      showPopup(
+        "Application Submitted Successfully",
+        "Posting at <i>Garmin</i>",
+        "Submitted on <i>December 2, 2025</i>"
+      );
+      popupOkBtn.onclick = function () {
+        window.location.href = "home.html";
+      };
+    };
+
+    // Clicking overlay closes popup (for bookmark)
+    overlay.onclick = hidePopup;
+  </script>
+</body>
+</html>
