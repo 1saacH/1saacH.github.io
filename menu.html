@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers</title>
+    <link rel="stylesheet" href="isaac_styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="brand">
+        <img
+          src="images/logo.webp"
+          alt="Student Career Search logo"
+          class="logo-img"
+          id="logo"
+        />
+      </div>
+
+      <div class="tabs">
+        <ul class="menu-list">
+          <li class="menu-list-item" id="home">
+            <a href="./home.html" class="menu-item" target="_top">Home</a>
+          </li>
+          <li class="menu-list-item" id="ng-postings">
+            <a href="./new_grad_postings.html" class="menu-item" target="_top">New Grad</a>
+          </li>
+          <li class="menu-list-item" id="intern-postings">
+            <a href="./intern_postings.html" class="menu-item" target="_top">Internships</a>
+          </li>
+          <li class="menu-list-item" id="application-status">
+            <a href="./application_status.html" class="menu-item" target="_top">My Applications</a>
+          </li>
+          <li class="menu-list-item" id="bookmarks">
+            <a href="./bookmarks.html" class="menu-item" target="_top">My Bookmarks</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="right-part">
+        <div class="dropdown">
+          <h3 class="username">[username] ▾</h3>
+          <div class="dropdown-content">
+            <a id="logout-btn">Logout</a>
+          </div>
+        </div>
+        <img
+          src="images/profile.png"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+      </div>
+    </div>
+
+    <script>
+      /* Existing redirect behavior (kept intact) */
+      document.getElementById("logo").onclick = function () {
+        top.location.href = "home.html";
+      };
+      document.getElementById("home").onclick = function () {
+        top.location.href = "home.html";
+      };
+      document.getElementById("ng-postings").onclick = function () {
+        top.location.href = "new_grad_postings.html";
+      };
+      document.getElementById("intern-postings").onclick = function () {
+        top.location.href = "intern_postings.html";
+      };
+      document.getElementById("application-status").onclick = function () {
+        top.location.href = "application_status.html";
+      };
+      document.getElementById("bookmarks").onclick = function () {
+        top.location.href = "bookmarks.html";
+      };
+
+      document.getElementById("logout-btn").onclick = function () {
+        top.location.href = "login.html";
+      };
+
+
+      /* Robust active-tab detection and click handling */
+      (function () {
+        const menuLinks = document.querySelectorAll('.menu-item');
+
+        // Compute current filename (e.g. "home.html"). If root or empty, treat as "home.html"
+        let currentPage = window.location.pathname.split('/').pop();
+        if (!currentPage || currentPage === '') {
+          // you can change this default if your root page is different
+          currentPage = 'home.html';
+        }
+
+        // Try to match each menu link's href to the current page filename.
+        menuLinks.forEach(link => {
+          const href = link.getAttribute('href') || '';
+          const hrefFile = href.split('/').pop();
+
+          // If exact filename matches OR link href contains currentPage, mark active
+          if (hrefFile === currentPage || href.indexOf(currentPage) !== -1) {
+            link.classList.add('active');
+          }
+
+          // Add click handler so the item shows active immediately (before navigation)
+          link.addEventListener('click', (e) => {
+            // Add active class locally so user sees the selection immediately
+            menuLinks.forEach(i => i.classList.remove('active'));
+            link.classList.add('active');
+
+            // Let the normal <a> navigation proceed (no preventDefault)
+          });
+        });
+      })();
+    </script>
+
+  </body>
+</html>
