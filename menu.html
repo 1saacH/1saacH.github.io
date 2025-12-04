@@ -77,39 +77,14 @@
         top.location.href = "login.html";
       };
 
-
-      /* Robust active-tab detection and click handling */
-      (function () {
-        const menuLinks = document.querySelectorAll('.menu-item');
-
-        // Compute current filename (e.g. "home.html"). If root or empty, treat as "home.html"
-        let currentPage = window.location.pathname.split('/').pop();
-        if (!currentPage || currentPage === '') {
-          // you can change this default if your root page is different
-          currentPage = 'home.html';
+      const params = new URLSearchParams(window.location.search);
+      const currentFile = params.get("page");
+      document.querySelectorAll(".menu-item").forEach(link => {
+        const hrefFile = link.getAttribute("href").split("/").pop();
+        if (hrefFile === currentFile) {
+          link.classList.add("active");
         }
-
-        // Try to match each menu link's href to the current page filename.
-        menuLinks.forEach(link => {
-          const href = link.getAttribute('href') || '';
-          const hrefFile = href.split('/').pop();
-
-          // If exact filename matches OR link href contains currentPage, mark active
-          if (hrefFile === currentPage || href.indexOf(currentPage) !== -1) {
-            link.classList.add('active');
-          }
-
-          // Add click handler so the item shows active immediately (before navigation)
-          link.addEventListener('click', (e) => {
-            // Add active class locally so user sees the selection immediately
-            menuLinks.forEach(i => i.classList.remove('active'));
-            link.classList.add('active');
-
-            // Let the normal <a> navigation proceed (no preventDefault)
-          });
-        });
-      })();
+      });
     </script>
-
   </body>
 </html>

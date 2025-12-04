@@ -41,6 +41,7 @@
 
 /* page layout sits below the fixed top bar (script sets body padding-top) */
 .page {
+  padding-top: 60px;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -56,6 +57,7 @@
 body {
   background-color: #ececec; /* soft grey */
   color: var(--main-text);
+  height: 100%;
 }
 
 /* section bar that matches the top-bar visual style (but static) */
@@ -400,7 +402,7 @@ body {
     z-index: 999;
 }
 
-.popup-message {
+/* .popup-message {
   position: fixed;
   top: 350px;
   left: 50%;
@@ -415,9 +417,9 @@ body {
   z-index: 2000;
   min-width: 300px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
+} */
 
-.ok-btn {
+/* .ok-btn {
   position: absolute;
   bottom: 10px;
   left: 15px;
@@ -430,10 +432,10 @@ body {
   font-weight: 500;
   cursor: bold;
   transition: background-color 0.2s ease, transform 0.1s ease;
-}
+} */
 
 
-.ok-btn:hover {
+/* .ok-btn:hover {
   background-color: #b80017;
   transform: scale(1.03);
-}
+} */

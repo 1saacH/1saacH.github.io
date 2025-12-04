@@ -292,12 +292,6 @@ button:focus {
   cursor: pointer;
 }
 
-/* remove global background for pages that set .no-bg on body */
-body.no-bg {
-  background: none;
-  background-color: var(--bg);
-}
-
 @media (max-width: 600px) {
   .app-table th,
   .app-table td {
@@ -330,7 +324,6 @@ body.no-bg {
 
 /* note: row-level hover effects removed so only the job title link shows hover styles */
 .app-table {
-  border-radius: 10px;
   overflow: hidden;
 }
 .app-table thead th {
