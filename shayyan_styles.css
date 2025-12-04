@@ -6,7 +6,8 @@
   --radius: 8px;
   --main-red: #d6011c;
   --light-grey: #f4f4f4;
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -127,9 +128,18 @@ body {
 .form-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   margin-top: 6px;
 }
+
+.form-forgot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
 .btn-primary {
   display: inline-block;
   padding: 10px 16px;
